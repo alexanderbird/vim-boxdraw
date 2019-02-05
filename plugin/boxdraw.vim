@@ -66,6 +66,7 @@ endfunction
 
 " Box drawing
 vnoremap +o :<C-u>call boxdraw#Draw("+o", [])<CR>
+vnoremap +d :<C-u>call boxdraw#Draw("+d", [])<CR>
 vnoremap +O :<C-u>call boxdraw#DrawWithLabel("+O", [])<CR>
 vnoremap +[O :<C-u>call boxdraw#DrawWithLabel("+[O", [])<CR>
 vnoremap +]O :<C-u>call boxdraw#DrawWithLabel("+]O", [])<CR>
