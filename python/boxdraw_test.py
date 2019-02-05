@@ -1,3 +1,4 @@
+# encoding=utf-8
 from boxdraw import *
 from pprint import pprint
 
@@ -83,6 +84,20 @@ def test_line():
         '+---+',
     ]
 
+def test_unicode_line():
+    assert line(u'↞━↠', 0) == u''
+    assert line(u'↞━↠', 1) == u'↞'
+    assert line(u'↞━↠', 2) == u'↞━'
+    assert line(u'↞━↠', 3) == u'↞━↠'
+    assert line(u'↞━↠', 4) == u'↞━━↠'
+    assert line(u'↞━↠', 5) == u'↞━━━↠'
+
+    assert line([[u'╔═══╗'], [u'║   ║'], [u'╚═══╝']], 4) == [
+        u'╔═══╗',
+        u'║   ║',
+        u'║   ║',
+        u'╚═══╝',
+    ]
 # -------- Box drawing --------
 
 def test_basic_box_drawing():
@@ -94,6 +109,14 @@ def test_basic_box_drawing():
         '........', '........',
     ])
 
+def test_double_box_drawing():
+    assert_cmd('+d', '.', '.', [
+        '........',  '........',
+        '..1.....', u'..╔═══╗.',
+        '........', u'..║   ║.',
+        '......2.', u'..╚═══╝.',
+        '........',  '........',
+    ])
 def test_box_drawing_after_line_end():
     assert_cmd('+o' ,'.', '.', [
         '........', '........',
