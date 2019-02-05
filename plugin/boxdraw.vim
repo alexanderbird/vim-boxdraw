@@ -30,7 +30,7 @@ function boxdraw#Draw(cmd, args)
 	let x1 = p1[2] + p1[3] - 1
 	let x2 = p2[2] + p2[3] - 1
 	let c = [s:drawscript, shellescape(a:cmd), y1, x1, y2, x2] + a:args
-	execute "%!" . join(c, " ")
+	execute "%!PYTHONIOENCODING=UTF-8 " . join(c, " ")
 	call setpos(".", p2)
 endfunction
 
